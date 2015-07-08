@@ -13,13 +13,13 @@ var Quiz = sequelize.import(path.join(__dirname, 'quiz'));
 exports.Quiz = Quiz;
 
 // Crear e Inicializar Tabla Preguntas
-sequelize.sync().success(function() {
+sequelize.sync().then(function() {
   // success() ejecuta el manejador tras creación Tabla
-  Quiz.count().success(function (count){
+  Quiz.count().then(function (count){
       if(count === 0) {
         Quiz.create({ pregunta: 'Capital de Lienchestein',
                       respuesta: 'Vaduz'})
-        .success(function(){console.log('Base de Datos Init OK')});
+        .then(function(){console.log('Base de Datos Init OK')});
       };
   });
 });
