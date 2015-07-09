@@ -31,11 +31,15 @@ exports.Quiz = Quiz;
 
 // Crear e Inicializar Tabla Preguntas
 sequelize.sync().then(function() {
-  // success() ejecuta el manejador tras creación Tabla
+  // then(..) ejecuta el manejador tras creación Tabla
   Quiz.count().then(function (count){
       if(count === 0) {
         Quiz.create({ pregunta: 'Capital de Lienchestein',
-                      respuesta: 'Vaduz'})
+                      respuesta: 'Vaduz'});
+        Quiz.create({ pregunta: 'Capital de Moldavia',
+                      respuesta: 'Chisinau'});
+        Quiz.create({ pregunta: 'Capital de Kosovo',
+                      respuesta: 'Pristina'})
         .then(function(){console.log('Base de Datos Init OK')});
       };
   });
