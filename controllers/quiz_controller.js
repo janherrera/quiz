@@ -1,6 +1,13 @@
 var models = require('../models/models.js');
 
 // Get /quizes/:id/edit
+exports.destroy = function(req, res) {
+    req.quiz.destroy().then( function() {
+        res.redirect('/quizes');
+    }).catch(function(error) {next(error);});
+};
+
+// Get /quizes/:id/edit
 exports.edit = function(req, res) {
     var quiz = req.quiz;    // autoload de instancia de quiz
 
@@ -13,7 +20,7 @@ exports.update = function(req, res) {
     req.quiz.respuesta = req.body.quiz.respuesta;
 
     req.quiz
-    .validate();
+    .validate()
     .then(
         function(err){
             if (err) {
