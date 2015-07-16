@@ -35,11 +35,14 @@ sequelize.sync().then(function() {
   Quiz.count().then(function (count){
       if(count === 0) {
         Quiz.create({ pregunta: 'Capital de Lienchestein',
-                      respuesta: 'Vaduz'});
+                      respuesta: 'Vaduz',
+                      tema: 'humanidades'});
         Quiz.create({ pregunta: 'Capital de Moldavia',
-                      respuesta: 'Chisinau'});
+                      respuesta: 'Chisinau',
+                      tema: 'humanidades'});
         Quiz.create({ pregunta: 'Capital de Kosovo',
-                      respuesta: 'Pristina'})
+                      respuesta: 'Pristina',
+                      tema: 'humanidades'})
         .then(function(){console.log('Base de Datos Init OK')});
       };
   });
