@@ -7,3 +7,4 @@ body                  { font-size: xx-large; }
 footer, input         { font-size: large; }
 #listQs               { padding: 10px; margin: }
 #ErrorMsgs            { color: #f61; font-size: smaler }
+.right                { float: right }

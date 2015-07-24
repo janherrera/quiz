@@ -9,3 +9,4 @@ footer                { clear:both; display:block; }
 table                 { margin: auto; }
 #listQs               { padding: 15px; }
 #ErrorMsgs            { color: #f61; font-size: smaler }
+.right                { float: right }

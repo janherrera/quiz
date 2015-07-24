@@ -20,8 +20,6 @@ exports.update = function(req, res) {
     req.quiz.respuesta = req.body.quiz.respuesta;
     req.quiz.tema = req.body.quiz.tema;
 
-    console.log("UPDATE: " + req.quiz.tema + "QQ")
-
     req.quiz
     .validate()
     .then(
@@ -68,7 +66,10 @@ exports.create = function(req, res) {
 
 // Autoload para pillar el código en caso de :quizId
 exports.load = function(req, res, next, quizId) {
-  models.Quiz.findById(quizId).then(function(quiz) {
+  models.Quiz.find({
+            where: { id: Number(quizId) },
+            include: [{ model: models.Comment }]
+        }).then(function(quiz) {
       if (quiz) {
         req.quiz = quiz;
         next();
