@@ -29,7 +29,7 @@ exports.create = function(req,res) {
           return;
       }
 
-      req.session.user = {id: user.id, username: user.username};
+      req.session.user = {id: user.id, username: user.username, lastTime: Date.now()};
       res.redirect(req.session.redir.toString());
   });
 }

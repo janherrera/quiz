@@ -25,6 +25,18 @@ app.use(session());
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Salida auto de sesión por tiempo
+app.use(function(req, res, next) {
+    if(req.session.user) {
+        if (Date.now() - req.session.user.lastTime > 120000 ) {
+            delete req.session.user;
+        } else {
+            req.session.user.lastTime = Date.now();
+        }
+    }
+    next();
+});
+
 // Helpers dinamicos:
 app.use(function(req, res, next) {
     // guardar path en session.redir para despues de login
